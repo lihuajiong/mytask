@@ -562,11 +562,6 @@
           <GroupName>Bsp</GroupName>
           <Files>
             <File>
-              <FileName>bsp_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\bsp_dma.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_exti.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Bsp\bsp_exti.c</FilePath>

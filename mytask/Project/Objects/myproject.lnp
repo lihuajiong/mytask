@@ -29,7 +29,6 @@
 ".\objects\stm32f10x_tim.o"
 ".\objects\stm32f10x_usart.o"
 ".\objects\stm32f10x_wwdg.o"
-".\objects\bsp_dma.o"
 ".\objects\bsp_exti.o"
 ".\objects\bsp_led.o"
 ".\objects\bsp_tim.o"
