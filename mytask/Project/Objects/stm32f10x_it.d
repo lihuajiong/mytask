@@ -35,9 +35,7 @@
 .\objects\stm32f10x_it.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\stm32f10x_it.o: ..\User\bsp.h
 .\objects\stm32f10x_it.o: ..\Bsp\bsp_led.h
-.\objects\stm32f10x_it.o: ..\Bsp\bsp_exti.h
 .\objects\stm32f10x_it.o: ..\Bsp\bsp_usart.h
 .\objects\stm32f10x_it.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\stm32f10x_it.o: ..\Bsp\bsp_dma.h
 .\objects\stm32f10x_it.o: ..\Bsp\bsp_tim.h
 .\objects\stm32f10x_it.o: ..\Bsp\bsp_can.h

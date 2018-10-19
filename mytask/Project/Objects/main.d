@@ -37,9 +37,6 @@
 .\objects\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\User\bsp.h
 .\objects\main.o: ..\Bsp\bsp_led.h
-.\objects\main.o: ..\Bsp\bsp_exti.h
 .\objects\main.o: ..\Bsp\bsp_usart.h
-.\objects\main.o: ..\Bsp\bsp_dma.h
 .\objects\main.o: ..\Bsp\bsp_tim.h
 .\objects\main.o: ..\Bsp\bsp_can.h
-.\objects\main.o: ..\Tool\Tool_PID.h

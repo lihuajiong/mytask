@@ -154,15 +154,15 @@ void DebugMon_Handler(void)
 * @return 无
 * @author 李华炯
 */
-extern uint16_t time;
-void  TIM1_IRQHandler(void)
-{
-	if ( TIM_GetITStatus( TIM1 , TIM_IT_Update ) != RESET ) 
-	{	
-		time++;
-		TIM_ClearITPendingBit( TIM1 , TIM_FLAG_Update );  		 
-	}		
-}
+//extern uint16_t time;
+//void  TIM1_IRQHandler(void)
+//{
+//	if ( TIM_GetITStatus( TIM1 , TIM_IT_Update ) != RESET ) 
+//	{	
+//		time++;
+//		TIM_ClearITPendingBit( TIM1 , TIM_FLAG_Update );  		 
+//	}		
+//}
 
 
 /**
@@ -171,17 +171,19 @@ void  TIM1_IRQHandler(void)
 * @return 无
 * @author 李华炯
 */
-extern osThreadId thread4_id;
+extern osThreadId thread7_id;
+extern uint16_t Receive;
+extern uint8_t num;
 void	USART1_funtion(void)
 {
-	  uint8_t ucTemp;
 		if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
 		{		
-				ucTemp = USART_ReceiveData(USART1);
-//			if((ucTemp>=0x30) && (ucTemp<=0x39))
-//			{
-				USART_SendData(USART1,ucTemp);  
-//			}
+			Receive |= USART_ReceiveData(USART1);
+			num++;
+			if(num==2)
+			{
+				Receive = (Receive << 8);
+			}
 		}	
 }
 

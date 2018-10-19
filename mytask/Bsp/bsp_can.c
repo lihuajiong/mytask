@@ -102,17 +102,17 @@ static void CAN_Filter_Config(void)
 	CAN_FilterInitTypeDef  CAN_FilterInitStructure;
 
 	/*CAN筛选器初始化*/
-	CAN_FilterInitStructure.CAN_FilterNumber=0;						//筛选器组0
-	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdMask;	//工作在掩码模式
-	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;	//筛选器位宽为单个32位。
+	CAN_FilterInitStructure.CAN_FilterNumber=0;																											//筛选器组0
+	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdMask;																		//工作在掩码模式
+	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;																	//筛选器位宽为单个32位。
 	/* 使能筛选器，按照标志的内容进行比对筛选，扩展ID不是如下的就抛弃掉，是的话，会存入FIFO0。 */
 
 //	CAN_FilterInitStructure.CAN_FilterIdHigh= ((((u32)0x1314<<2)|CAN_RTR_DATA)&0xFFFF0000)>>16;		//要筛选的ID高位 
-	CAN_FilterInitStructure.CAN_FilterIdLow= (((u32) 0x0055<<1)|CAN_RTR_DATA)&0xFFFF; //要筛选的ID低位 
-//	CAN_FilterInitStructure.CAN_FilterMaskIdHigh= 0xFFFF;			//筛选器高16位每位必须匹配
-	CAN_FilterInitStructure.CAN_FilterMaskIdLow= 0xFFFF;			//筛选器低16位每位必须匹配
-	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_Filter_FIFO0 ;				//筛选器被关联到FIFO0
-	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;			//使能筛选器
+	CAN_FilterInitStructure.CAN_FilterIdLow= (((u32) 0x201<<1)|CAN_RTR_DATA)&0xFFFF; 								//要筛选的ID低位 
+//	CAN_FilterInitStructure.CAN_FilterMaskIdHigh= 0xFFFF;																					//筛选器高16位每位必须匹配
+	CAN_FilterInitStructure.CAN_FilterMaskIdLow= 0xFFFF;																						//筛选器低16位每位必须匹配
+	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_Filter_FIFO0 ;															//筛选器被关联到FIFO0
+	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;																						//使能筛选器
 	CAN_FilterInit(&CAN_FilterInitStructure);
 	/*CAN通信中断使能*/
 	CAN_ITConfig(CANx, CAN_IT_FMP0, ENABLE);
@@ -163,21 +163,30 @@ void Init_RxMes(CanRxMsg *RxMessage)
  * 输入  ：发送报文结构体
  * 输出  : 无
  * 调用  ：外部调用
- */	 
+ */	
+extern uint16_t Receive;
 void CAN_SetMsg(CanTxMsg *TxMessage)
 {	  
 	uint8_t ubCounter = 0;
 
-  TxMessage->StdId=0x0066;						 
+  TxMessage->StdId=0x200;								//电机接受ID						 
 //  TxMessage->ExtId=0x1314;					 //使用的扩展ID
-  TxMessage->IDE=CAN_ID_STD;					 //扩展模式
+  TxMessage->IDE=CAN_ID_STD;					 //标准模式
   TxMessage->RTR=CAN_RTR_DATA;				 //发送的是数据
-  TxMessage->DLC=8;							 //数据长度为8字节
+  TxMessage->DLC=8;							 				//数据长度为8字节
 	
 	/*设置要发送的数据0-7*/
 	for (ubCounter = 0; ubCounter < 8; ubCounter++)
   {
-    TxMessage->Data[ubCounter] = 2*ubCounter;
+		if(ubCounter%2==0)
+		{
+			TxMessage->Data[ubCounter] = (Receive&0xff00)>>8;
+		}
+		else
+		{
+			TxMessage->Data[ubCounter] = Receive;
+		}
+    
   }
 }
 
