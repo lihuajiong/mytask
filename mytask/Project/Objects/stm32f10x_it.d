@@ -37,5 +37,4 @@
 .\objects\stm32f10x_it.o: ..\Bsp\bsp_led.h
 .\objects\stm32f10x_it.o: ..\Bsp\bsp_usart.h
 .\objects\stm32f10x_it.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\stm32f10x_it.o: ..\Bsp\bsp_tim.h
 .\objects\stm32f10x_it.o: ..\Bsp\bsp_can.h

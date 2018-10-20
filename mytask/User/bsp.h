@@ -14,7 +14,7 @@
 //#include	"bsp_exti.h"
 #include	"bsp_usart.h"
 //#include	"bsp_dma.h"
-#include	"bsp_tim.h"
+//#include	"bsp_tim.h"
 #include	"bsp_can.h"
 
 

@@ -562,19 +562,9 @@
           <GroupName>Bsp</GroupName>
           <Files>
             <File>
-              <FileName>bsp_exti.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\bsp_exti.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Bsp\bsp_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_tim.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\bsp_tim.c</FilePath>
             </File>
             <File>
               <FileName>bsp_usart.c</FileName>

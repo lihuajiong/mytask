@@ -176,7 +176,7 @@ void CAN_SetMsg(CanTxMsg *TxMessage)
   TxMessage->DLC=8;							 				//数据长度为8字节
 	
 	/*设置要发送的数据0-7*/
-	for (ubCounter = 0; ubCounter < 8; ubCounter++)
+	for (ubCounter = 0; ubCounter < 2; ubCounter++)
   {
 		if(ubCounter%2==0)
 		{

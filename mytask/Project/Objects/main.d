@@ -38,5 +38,4 @@
 .\objects\main.o: ..\User\bsp.h
 .\objects\main.o: ..\Bsp\bsp_led.h
 .\objects\main.o: ..\Bsp\bsp_usart.h
-.\objects\main.o: ..\Bsp\bsp_tim.h
 .\objects\main.o: ..\Bsp\bsp_can.h
